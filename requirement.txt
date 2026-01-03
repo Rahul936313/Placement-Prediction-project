@@ -2,4 +2,7 @@ pandas
 numpy
 matplotlib
 seaborn
+torch
+scikit-learn
+streamlit
 kaggle
