@@ -1,5 +1,4 @@
 import streamlit as st
-import torch
 import numpy as np
 from predict_placement import PlacementPredictor
 
