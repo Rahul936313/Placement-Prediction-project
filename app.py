@@ -1,14 +1,8 @@
-"""
-Streamlit Frontend for Placement Prediction
-Run with: streamlit run app.py
-"""
-
 import streamlit as st
 import torch
 import numpy as np
 from predict_placement import PlacementPredictor
 
-# Page configuration
 st.set_page_config(
     page_title="Placement Prediction System",
     page_icon="🎓",
@@ -16,7 +10,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for better styling
+
 st.markdown("""
     <style>
     .main-header {
@@ -56,11 +50,11 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Title
+ 
 st.markdown('<h1 class="main-header">🎓 Student Placement Prediction System</h1>', unsafe_allow_html=True)
 st.markdown("---")
 
-# Initialize session state
+ 
 if 'predictor' not in st.session_state:
     try:
         with st.spinner("Loading model..."):
@@ -73,7 +67,7 @@ if 'predictor' not in st.session_state:
         st.error(f"❌ Error loading model: {str(e)}")
         st.stop()
 
-# Sidebar with information
+ 
 with st.sidebar:
     st.header("ℹ️ Information")
     st.markdown("""
@@ -98,16 +92,16 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("**Note**: Predictions are based on trained ML model")
 
-# Main content area
+ 
 col1, col2 = st.columns([1, 1])
 
 with col1:
     st.header("📝 Enter Student Details")
     
     with st.form("prediction_form"):
-        # Input fields
+    
         iq = st.number_input(
-            "IQ (Intelligence Quotient)",
+            "IQ ( between 0 - 150)",
             min_value=70,
             max_value=150,
             value=100,
@@ -153,7 +147,7 @@ with col1:
             help="Enter number of projects completed"
         )
         
-        # Submit button
+        
         submitted = st.form_submit_button("🔮 Predict Placement", use_container_width=True)
 
 with col2:
@@ -172,13 +166,13 @@ with col2:
                 )
             
             if percentage is not None:
-                # Display results
+                
                 st.markdown('<div class="prediction-box">', unsafe_allow_html=True)
                 
-                # Percentage display
+                
                 st.markdown(f'<div class="percentage-display">{percentage:.2f}%</div>', unsafe_allow_html=True)
                 
-                # Status
+                
                 status = "Placed" if percentage >= 50 else "Not Placed"
                 status_class = "placed" if percentage >= 50 else "not-placed"
                 st.markdown(
@@ -188,7 +182,7 @@ with col2:
                 
                 st.markdown('</div>', unsafe_allow_html=True)
                 
-                # Additional information
+                
                 st.markdown("---")
                 st.subheader("📈 Interpretation")
                 
@@ -201,10 +195,10 @@ with col2:
                 else:
                     st.error("❌ Low probability. Focus on improving academic performance and skills.")
                 
-                # Progress bar
+                
                 st.progress(percentage / 100)
                 
-                # Detailed breakdown
+                
                 with st.expander("📋 Input Summary"):
                     st.write(f"**IQ**: {iq}")
                     st.write(f"**Previous Semester Result**: {prev_sem_result}")
@@ -222,7 +216,7 @@ with col2:
     else:
         st.info("👆 Fill in the form and click 'Predict Placement' to see results")
 
-# Footer
+ 
 st.markdown("---")
 st.markdown(
     "<div style='text-align: center; color: #666; padding: 1rem;'>"
