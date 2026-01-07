@@ -140,7 +140,7 @@ with col1:
         projects_completed = st.number_input(
             "Projects Completed",
             min_value=0,
-            max_value=10,
+            max_value=5,
             value=3,
             step=1,
             help="Enter number of projects completed"
