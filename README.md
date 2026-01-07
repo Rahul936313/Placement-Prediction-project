@@ -1,7 +1,7 @@
 # Student Placement Prediction System
 
-A machine learning project that predicts student placement probability based on academic and skill-based criteria.
-
+A machine learning project that predicts student placement probability based on academic and skill-based criteria.https://github.com/Rahul936313/Placement-Prediction-project/edit/main/README.md
+# The app is live on  https://placement-prediction-project-1.onrender.com/
 ## Features
 
 - **Neural Network Model**: Deep learning model for placement prediction
